@@ -18,13 +18,14 @@ public class Book {
 	private String shelf;
 	private String shelfRow;
 	private String shelfColumn;
+	private int copies;
 
 	public Book() {
 
 	}
 
 	public Book(String title, String ISBN, String genre, String author, String shelf, String shelfRow,
-			String shelfColumn) {
+			String shelfColumn, int copies) {
 		
 		this.title = title;
 		this.ISBN = ISBN;
@@ -33,6 +34,7 @@ public class Book {
 		this.shelf = shelf;
 		this.shelfRow = shelfRow;
 		this.shelfColumn = shelfColumn;
+		this.copies = copies;
 
 	}
 	
@@ -99,6 +101,14 @@ public class Book {
 
 	public void setShelfColumn(String shelfColumn) {
 		this.shelfColumn = shelfColumn;
+	}
+
+	public int getCopies() {
+		return copies;
+	}
+
+	public void setCopies(int copies) {
+		this.copies = copies;
 	}
 
 }
