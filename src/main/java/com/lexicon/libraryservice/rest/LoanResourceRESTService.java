@@ -21,7 +21,6 @@ public class LoanResourceRESTService {
 
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
 	public Response saveLoan(Loan loan) throws URISyntaxException {
 		Response.ResponseBuilder builder = Response.created(new URI("localhost:8080/LibraryService/rest/loan"));
 		try {
