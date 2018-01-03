@@ -1,4 +1,4 @@
-package com.lexicon.rest;
+package com.lexicon.libraryservice.data;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ import javax.persistence.criteria.Root;
 
 import org.jboss.tools.examples.model.Member;
 
-import com.lexicon.model.Book;
+import com.lexicon.libraryservice.model.Book;
 
 @Stateless
 public class BookDAO implements BookDAOInterface {

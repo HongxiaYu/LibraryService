@@ -1,4 +1,4 @@
-package com.lexicon.rest;
+package com.lexicon.libraryservice.rest;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -12,7 +12,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import com.lexicon.model.Book;
+import com.lexicon.libraryservice.data.BookDAOInterface;
+import com.lexicon.libraryservice.model.Book;
 
 @Path("/book")
 public class BookResource {
