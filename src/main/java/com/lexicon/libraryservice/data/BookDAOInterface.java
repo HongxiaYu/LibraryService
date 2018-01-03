@@ -1,7 +1,7 @@
-package com.lexicon.rest;
+package com.lexicon.libraryservice.data;
 
 import java.util.List;
-import com.lexicon.model.Book;
+import com.lexicon.libraryservice.model.Book;
 
 public interface BookDAOInterface {	
 	void persistBook(Book book);
