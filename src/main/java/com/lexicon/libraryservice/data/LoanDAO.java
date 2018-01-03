@@ -10,7 +10,7 @@ import javax.persistence.TypedQuery;
 import com.lexicon.libraryservice.model.Loan;
 
 @Stateless
-public class LoanDAO implements LoanDAOInterface {
+public class LoanDAO implements LoanDAOInterface{
 
 	@Inject
 	EntityManager em;
