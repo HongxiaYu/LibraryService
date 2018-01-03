@@ -2,12 +2,14 @@ package com.lexicon.libraryservice.data;
 
 import java.util.List;
 
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
 import com.lexicon.libraryservice.model.Loan;
 
+@Stateless
 public class LoanDAO implements LoanDAOInterface {
 
 	@Inject
