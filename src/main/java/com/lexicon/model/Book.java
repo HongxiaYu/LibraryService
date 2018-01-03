@@ -11,7 +11,7 @@ public class Book {
 	@GeneratedValue
 	private long id;
 	
-	private String ISBN;
+	private String strISBN;
 	private String genre;
 	private String title;
 	private String author;
@@ -24,11 +24,11 @@ public class Book {
 
 	}
 
-	public Book(String title, String ISBN, String genre, String author, String shelf, String shelfRow,
+	public Book(String strISBN, String ISBN, String genre, String title, String author, String shelf, String shelfRow,
 			String shelfColumn, int copies) {
 		
 		this.title = title;
-		this.ISBN = ISBN;
+		this.strISBN = strISBN;
 		this.genre = genre;
 		this.author = author;
 		this.shelf = shelf;
@@ -46,12 +46,13 @@ public class Book {
 		this.id = id;
 	}
 
-	public String getISBN() {
-		return ISBN;
+	
+	public String getStrISBN() {
+		return strISBN;
 	}
 
-	public void setISBN(String iSBN) {
-		ISBN = iSBN;
+	public void setStrISBN(String strISBN) {
+		this.strISBN = strISBN;
 	}
 
 	public String getGenre() {
@@ -110,5 +111,6 @@ public class Book {
 	public void setCopies(int copies) {
 		this.copies = copies;
 	}
+	
 
 }
