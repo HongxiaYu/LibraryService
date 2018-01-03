@@ -1,4 +1,4 @@
-package com.lexicon.model;
+package com.lexicon.libraryservice.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
