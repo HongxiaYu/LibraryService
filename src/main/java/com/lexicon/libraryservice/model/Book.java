@@ -1,15 +1,19 @@
 package com.lexicon.libraryservice.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "books")
 public class Book {
 
 	@Id
 	@GeneratedValue
-	private long id;
+	//@Column(name = "BOOK_ID")
+	private Long id;
 	
 	private String strISBN;
 	private String genre;
@@ -18,14 +22,15 @@ public class Book {
 	private String shelf;
 	private String shelfRow;
 	private String shelfColumn;
+	
 	private int copies;
 
 	public Book() {
 
 	}
 
-	public Book(String strISBN, String ISBN, String genre, String title, String author, String shelf, String shelfRow,
-			String shelfColumn, int copies) {
+	public Book
+	(String strISBN, String genre, String title, String author, String shelf, String shelfRow, String shelfColumn, int copies) {
 		
 		this.title = title;
 		this.strISBN = strISBN;
@@ -34,18 +39,19 @@ public class Book {
 		this.shelf = shelf;
 		this.shelfRow = shelfRow;
 		this.shelfColumn = shelfColumn;
+		
 		this.copies = copies;
-
 	}
-	
-	public long getId() {
+
+	public Long getId() {
 		return id;
 	}
 
+	/*
 	public void setId(long id) {
 		this.id = id;
 	}
-
+	*/
 	
 	public String getStrISBN() {
 		return strISBN;
@@ -111,6 +117,5 @@ public class Book {
 	public void setCopies(int copies) {
 		this.copies = copies;
 	}
-	
 
 }

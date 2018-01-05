@@ -27,11 +27,11 @@ public class BookResource {
 		dao.persistBook(book);
 		return Response.created(new URI("localhost:8080/LibraryService/rest/book")).build();
 	}
-	
+		
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getAllBooks() {
 		return Response.ok(dao.getAllBooks()).build();
 	}
-	
+
 }

@@ -11,25 +11,25 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 //import com.lexicon.libraryservice.data.LibraryMemberRepository;
-import com.lexicon.libraryservice.model.LibraryMember;
+import com.lexicon.libraryservice.model.LMember;
 
 @RequestScoped
 public class LibraryMemberListProducer {
 	//public class MemberListProducer {
-	    @Inject
-	    private LibraryMemberRepository memberRepository;
+	  /*  @Inject
+	    private MemberDAO memberRepository;
 
-	    private List<LibraryMember> members;
+	    private List<LMember> members;
 
 	    // @Named provides access the return value via the EL variable name "members" in the UI (e.g.
 	    // Facelets or JSP view)
 	    @Produces
 	    @Named
-	    public List<LibraryMember> getLibraryMembers() {
+	    public List<LMember> getLibraryMembers() {
 	        return members;
 	    }
 
-	    public void onMemberListChanged(@Observes(notifyObserver = Reception.IF_EXISTS) final LibraryMember member) {
+	    public void onMemberListChanged(@Observes(notifyObserver = Reception.IF_EXISTS) final LMember member) {
 	        retrieveAllMembersOrderedByName();
 	    }
 
@@ -37,5 +37,5 @@ public class LibraryMemberListProducer {
 	    public void retrieveAllMembersOrderedByName() {
 	        members = memberRepository.findAllOrderedByName();
 	    }
-	
+	*/
 }
