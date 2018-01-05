@@ -18,14 +18,28 @@ public class LoanDAO implements LoanDAOInterface{
 	EntityManager em;
 	
 	@Override
-	public void persistLoan(Loan loan) {
+	public void persistLoan(Loan loan)
+	{
 		em.persist(loan);
 	}
 	
 	@Override
-	public List<Loan> getAllLoans(){
+	public List<Loan> getAllLoans()
+	{
 		TypedQuery<Loan> query = em.createQuery("SELECT l FROM Loan l", Loan.class);
 		return query.getResultList();
+	}
+	
+	@Override
+	public void deleteLoan(Loan loan)
+	{
+		
+	}
+	
+	@Override
+	public void prolongLoan(Loan loan)
+	{
+		loan.setNewDateToReturn();
 	}
 	
 /*

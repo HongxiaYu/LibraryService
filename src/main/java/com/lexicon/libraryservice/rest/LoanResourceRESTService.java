@@ -6,12 +6,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.inject.Inject;
+import javax.persistence.PersistenceContext;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 
 import com.lexicon.libraryservice.data.BookDAOInterface;
-import com.lexicon.libraryservice.data.MemebersInterface;
 import com.lexicon.libraryservice.data.LoanDAOInterface;
+import com.lexicon.libraryservice.data.MemebersDAOInterface;
 import com.lexicon.libraryservice.model.Loan;
 
 @Path("/loan")
@@ -23,8 +24,8 @@ public class LoanResourceRESTService {
     @Inject
     BookDAOInterface booksRepository;
 
-    @Inject
-    MemebersInterface memebersRepository; 
+    @PersistenceContext
+    MemebersDAOInterface memebersRepository; 
     
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -52,6 +53,8 @@ public class LoanResourceRESTService {
 		
 		boolean bookExist  = booksRepository.contains(bookId);
 	    boolean memberExist  = memebersRepository.contains(memberId);
+	    System.out.println("member "+memberExist);
+	    System.out.println("book "+bookExist);
 		//boolean memberExist = true;
 		
 		if (!bookExist || !memberExist) {
@@ -78,4 +81,20 @@ public class LoanResourceRESTService {
 	public Response getAllLoans(){
 		return Response.ok(dao.getAllLoans()).build();
 	}
+	
+	/*
+	@DELETE
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response deleteLoan(){
+		return Response.ok(dao.getAllLoans()).build();
+	}
+	*/
+	
+	/*
+	@PUT
+	@Path("/{id}/newdate")
+	public Response prolongLoan(@PathParam("id") Long id) {
+		
+	}*/
+	
 }

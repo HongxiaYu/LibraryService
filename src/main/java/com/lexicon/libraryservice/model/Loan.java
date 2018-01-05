@@ -1,9 +1,14 @@
 package com.lexicon.libraryservice.model;
 
+import java.time.LocalDate;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 
 @Entity
@@ -14,70 +19,59 @@ public class Loan {
 	@GeneratedValue
 	private Long id;	
 	
-	public Loan() {
-	//	super();	
-	}
-
-	/*
-	 @OneToOne(cascade = CascadeType.ALL)
-	    @JoinTable(name = "user_passport",
-	        joinColumns = @JoinColumn(name="user_id"),
-	        inverseJoinColumns = @JoinColumn(name="passport_id")
-	    )
-	  //  private Passport passport;
-      private Book book;
-      */
-/*	@JoinTable(name = "books",
-	   joinColumns = @JoinColumn(name = "BOOK_ID")
-	// inverseJoinColumns = @JoinColumn(name="passport_id")
-	)
-	*/
-	
-   // @OneToOne (cascade = CascadeType.ALL)
-   // @PrimaryKeyJoinColumn
-   private Long bookId;   //!!!  Not Null
-	//private Book book;
+    @NotNull
+    @NotEmpty	
+    private Long bookId;   
 		
-	//@JoinColumn(name = "MEMBER_ID")
-	private Long memberId;   //!!! Not Null
+    @NotNull
+    @NotEmpty
+	private Long memberId;  
 	
-//	private LocalDate dateToReturn;
-	
-	//public Loan(Long memberId, Book book) {
-	public Loan(Long memberId, Long bookId) {		
-		super();
-		//this.book = book;
+    @NotNull
+    @NotEmpty
+	private LocalDate dateToReturn;
+
+	public Loan() {
+    	//	super();	
+    	}
+    
+   public Loan(Long memberId, Long bookId) {				
+		//super();		
 		this.bookId = bookId;
 		this.memberId = memberId;
-		//this.dateToReturn = dateToReturn;
+		
+		setNewDateToReturn();
+		//setDateToReturn(termToReturn()); 
+		//this.dateToReturn = LocalDate.now().plusDays(30);  
 	}
 	
+	public Long getId() {
+		return id;
+	}
+   
 	public Long getBookId() {
 		return bookId;
 	}
 	
-	/*
-	//@OneToOne(cascade = CascadeType.ALL)
-	public Book getBook() {
-		return book;
-	}
-
-	public void setBookId(Book book) {
-		this.book = book;
-	}
-	*/
-
 	public long getMemberId() {
 		return memberId;
 	}
-/*
-	public void setMemberId(long memberId) {
-		this.memberId = memberId;
-	}
-*/	
-	/*
+
 	public void setDateToReturn(LocalDate dateToReturn) {
 		this.dateToReturn = dateToReturn;
-	}
-	*/	
+    }	
+	
+//DATE TO RETURN:
+	
+	 public LocalDate getDateToReturn() {
+			return dateToReturn;
+		}
+	
+	public void setNewDateToReturn() {
+		setDateToReturn(termToReturn()); 		
+    }	
+	
+	private LocalDate termToReturn() {
+		return LocalDate.now().plusDays(30); //May 'depends' on a book 
+}	
 }

@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.lexicon.libraryservice.model.LMember;
 
-public interface MemebersInterface {
+public interface MemebersDAOInterface {
    LMember findById(Long id);
         
    LMember findByEmail(String email);

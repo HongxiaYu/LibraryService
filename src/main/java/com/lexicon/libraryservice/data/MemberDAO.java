@@ -13,7 +13,7 @@ import com.lexicon.libraryservice.model.LMember;
 import java.util.List;
 
       @Stateless
-      public class MemberDAO implements MemebersInterface {
+      public class MemberDAO implements MemebersDAOInterface {
 
 	    @Inject
 	    private EntityManager em;

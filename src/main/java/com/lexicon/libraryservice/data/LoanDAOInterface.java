@@ -6,10 +6,11 @@ import com.lexicon.libraryservice.model.Loan;
 
 public interface LoanDAOInterface {
 	
-	void persistLoan(Loan loan);
+	void persistLoan(Loan loan);	
+	void deleteLoan(Loan loan);
 	
-	//void persistLoan(Long memberid, Book book);
-	
-	List<Loan> getAllLoans();
+	void prolongLoan(Loan loan);
+		
+	List<Loan> getAllLoans();	
 	//get all overdue in 2 days, grouped/sorted by member	
 }
