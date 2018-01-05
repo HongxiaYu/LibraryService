@@ -8,7 +8,8 @@ public interface LoanDAOInterface {
 	
 	void persistLoan(Loan loan);
 	
-	List<Loan> getAllLoans();
-	//get all overdue in 2 days, grouped/sorted by member
+	//void persistLoan(Long memberid, Book book);
 	
+	List<Loan> getAllLoans();
+	//get all overdue in 2 days, grouped/sorted by member	
 }

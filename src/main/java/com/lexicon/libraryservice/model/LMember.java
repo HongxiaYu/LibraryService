@@ -17,11 +17,13 @@ package com.lexicon.libraryservice.model;
 	import org.hibernate.validator.constraints.Email;
 	import org.hibernate.validator.constraints.NotEmpty;
 
-	@SuppressWarnings("serial")
+//	@SuppressWarnings("serial")
+	//@Entity
+	//@XmlRootElement
+	
 	@Entity
-	@XmlRootElement
-	@Table(uniqueConstraints = @UniqueConstraint(columnNames = "email"))
-	public class LibraryMember implements Serializable {
+	@Table(name = "lmembers", uniqueConstraints = @UniqueConstraint(columnNames = "email"))	
+	public class LMember {
 	//public class Member implements Serializable {
 
 	    @Id
@@ -44,14 +46,20 @@ package com.lexicon.libraryservice.model;
 	    @Column(name = "phone_number")
 	    private String phoneNumber;
 
-	    public Long getId() {
+	    public LMember() {
+			//super();
+		}
+
+		public Long getId() {
 	        return id;
 	    }
 
+		/*
 	    public void setId(Long id) {
 	        this.id = id;
 	    }
-
+*/
+		
 	    public String getName() {
 	        return name;
 	    }
@@ -64,10 +72,12 @@ package com.lexicon.libraryservice.model;
 	        return email;
 	    }
 
+	    /*
 	    public void setEmail(String email) {
 	        this.email = email;
 	    }
-
+*/
+	    
 	    public String getPhoneNumber() {
 	        return phoneNumber;
 	    }
