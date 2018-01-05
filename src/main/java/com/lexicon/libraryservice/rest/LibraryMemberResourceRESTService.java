@@ -23,9 +23,14 @@ import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import org.jboss.tools.examples.data.MemberRepository;
 import org.jboss.tools.examples.model.Member;
 import org.jboss.tools.examples.service.MemberRegistration;
+
+import com.lexicon.libraryservice.data.MemberDAO;
+import com.lexicon.libraryservice.model.LMember;
+
+
+
 
 /**
  * JAX-RS Example
@@ -42,22 +47,22 @@ public class LibraryMemberResourceRESTService {
     private Validator validator;
 
     @Inject
-    private MemberRepository repository;
+    private MemberDAO repository;
 
     @Inject
     MemberRegistration registration;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Member> listAllMembers() {
+    public List<LMember> listAllMembers() {
         return repository.findAllOrderedByName();
     }
 
     @GET
     @Path("/{id:[0-9][0-9]*}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Member lookupMemberById(@PathParam("id") long id) {
-        Member member = repository.findById(id);
+    public LMember lookupMemberById(@PathParam("id") long id) {
+        LMember member = repository.findById(id);
         if (member == null) {
             throw new WebApplicationException(Response.Status.NOT_FOUND);
         }
@@ -156,7 +161,7 @@ public class LibraryMemberResourceRESTService {
      * @return True if the email already exists, and false otherwise
      */
     public boolean emailAlreadyExists(String email) {
-        Member member = null;
+        LMember member = null;
         try {
             member = repository.findByEmail(email);
         } catch (NoResultException e) {
