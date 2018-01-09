@@ -29,11 +29,6 @@ import com.lexicon.libraryservice.data.LibraryMemberRepository;
 import com.lexicon.libraryservice.model.LibraryMember;
 
 
-import com.lexicon.libraryservice.data.MemberDAO;
-import com.lexicon.libraryservice.model.LMember;
-
-
-
 
 /**
  * JAX-RS Example
