@@ -2,13 +2,18 @@ package com.lexicon.libraryservice.data;
 
 import java.util.List;
 import com.lexicon.libraryservice.model.Book;
+import com.lexicon.libraryservice.model.Loan;
 
 public interface BookDAOInterface {	
-	void persistBook(Book book);
-	List<Book> getAllBooks();
-	Book findBookById(long id);
-	Book findBookByISBN(String isbn);
+	public void persistBook(Book book);
+	public  List<Book> getAllBooks();
+	public  Book findBookById(long id);
+	public  Book findBookByISBN(String isbn);
 	List<Book> findBookByTitle(String title);
 	List<Book> findBookByAuthor(String author);
 	List<Book> findBookByGenre(String genre);
+	void deleteBookById(long id);
+	void updateBookGenre(long id, String genre);
+	void updateBookBorrowedCopies(long id, int iCopies);
+	List<Loan> findBookLoansById(long id);
 }

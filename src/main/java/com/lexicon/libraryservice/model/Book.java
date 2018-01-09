@@ -1,15 +1,22 @@
 package com.lexicon.libraryservice.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Book {
 
 	@Id
 	@GeneratedValue
-	private long id;
+	private Long id;
 	
 	private String strISBN;
 	private String genre;
@@ -18,15 +25,22 @@ public class Book {
 	private String shelf;
 	private String shelfRow;
 	private String shelfColumn;
-	private int copies;
+	private Integer copies;
+	private Integer avilableCopies;
+	
+	@OneToMany(mappedBy="loanBook", fetch=FetchType.EAGER)
+	private List<Loan> loans;
+	
+//	@ManyToMany(mappedBy="loanBook", fetch=FetchType.LAZY)
+//	private Loan loan;
+	
 
 	public Book() {
 
 	}
-
+	
 	public Book(String strISBN, String ISBN, String genre, String title, String author, String shelf, String shelfRow,
-			String shelfColumn, int copies) {
-		
+			String shelfColumn, int copies) {		
 		this.title = title;
 		this.strISBN = strISBN;
 		this.genre = genre;
@@ -35,14 +49,14 @@ public class Book {
 		this.shelfRow = shelfRow;
 		this.shelfColumn = shelfColumn;
 		this.copies = copies;
-
+		this.avilableCopies = copies;
 	}
 	
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -104,13 +118,46 @@ public class Book {
 		this.shelfColumn = shelfColumn;
 	}
 
-	public int getCopies() {
+	public Integer getCopies() {
 		return copies;
 	}
 
-	public void setCopies(int copies) {
+	public void setCopies(int copies) {		
 		this.copies = copies;
 	}
+
+	public Integer getAvilableCopies() {
+		return avilableCopies;
+	}
+
+	public void setAvilableCopies(int avilableCopies) {
+		this.avilableCopies = avilableCopies;
+	}
 	
+	public void addLoan(Loan loan) {
+		if(avilableCopies>0) {
+			avilableCopies --;
+			loans.add(loan);
+		}else {
+			System.out.println("No book to loan out!");
+		}
+	}
+	
+	public void deleteLoan(Loan loan) {
+			avilableCopies ++;
+			loans.remove(loan);
+	}
+	
+	public List<Loan> loadLoans() {
+		return loans;
+	}
+
+	public void setLoans(List<Loan> loans) {
+		this.loans = loans;
+	}
+
+	public String toString() {
+		return title + " " + author ;
+	}
 
 }
