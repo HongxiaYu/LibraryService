@@ -16,4 +16,6 @@ public interface BookDAOInterface {
 	void updateBookGenre(long id, String genre);
 	void updateBookBorrowedCopies(long id, int iCopies);
 	List<Loan> findBookLoansById(long id);
+	boolean contains(long id);
+	Book getBookById(long id);
 }

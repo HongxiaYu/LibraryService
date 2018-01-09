@@ -31,7 +31,7 @@ public class BookResource {
 		dao.persistBook(book);
 		return Response.created(new URI("localhost:8080/LibraryService/rest/book")).build();
 	}
-	
+		
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getAllBooks() {
@@ -79,4 +79,5 @@ public class BookResource {
 	public Response getBookLoansById(@PathParam("id") long id) {
 		return Response.ok(dao.findBookLoansById(id)).build();
 	}
+
 }

@@ -16,6 +16,7 @@ import com.lexicon.libraryservice.model.Loan;
 
 @Stateless
 public class BookDAO implements BookDAOInterface {
+	
 	@Inject
 	EntityManager em;
 
@@ -31,10 +32,16 @@ public class BookDAO implements BookDAOInterface {
 	}
 
 	@Override
-	public Book findBookById(long id) {
+	public Book getBookById(long id) {
 		return em.find(Book.class, id);
 	}
-
+	
+	@Override
+    public boolean contains(long id) {
+		Book book = em.find(Book.class, id);
+		return book != null;
+	};
+	
 	@Override
 	public Book findBookByISBN(String isbn) {
         CriteriaBuilder cb = em.getCriteriaBuilder();
@@ -106,5 +113,10 @@ public class BookDAO implements BookDAOInterface {
 		TypedQuery<Loan> query = em.createQuery("SELECT b FROM Loan b WHERE b.loanBook.id =:bookId", Loan.class);
 		query.setParameter("bookId", id);
 		return query.getResultList();
+	}
+
+	@Override
+	public Book findBookById(long id) {
+		return em.find(Book.class, id);
 	}	
 }

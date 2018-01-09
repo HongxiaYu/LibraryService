@@ -1,19 +1,3 @@
-/*
- * JBoss, Home of Professional Open Source
- * Copyright 2013, Red Hat, Inc. and/or its affiliates, and individual
- * contributors by the @authors tag. See the copyright.txt in the
- * distribution for a full listing of individual contributors.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- * http://www.apache.org/licenses/LICENSE-2.0
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 package com.lexicon.libraryservice.rest;
 
 import java.net.URI;
@@ -25,7 +9,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.logging.Logger;
 
-import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.persistence.NoResultException;
 import javax.validation.ConstraintViolation;
@@ -45,16 +28,21 @@ import javax.ws.rs.core.Response;
 import com.lexicon.libraryservice.data.LibraryMemberRepository;
 import com.lexicon.libraryservice.model.LibraryMember;
 
+
+import com.lexicon.libraryservice.data.MemberDAO;
+import com.lexicon.libraryservice.model.LMember;
+
+
+
+
 /**
  * JAX-RS Example
  * <p/>
  * This class produces a RESTful service to read/write the contents of the
  * members table.
  */
-@Path("/librarymembers")
-@RequestScoped
+@Path("/lmembers")
 public class LibraryMemberResourceRESTService {
-	// public class MemberResourceRESTService {
 
 	@Inject
 	private Logger log;
@@ -64,6 +52,7 @@ public class LibraryMemberResourceRESTService {
 
 	@Inject
 	private LibraryMemberRepository repository;
+
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
@@ -95,6 +84,7 @@ public class LibraryMemberResourceRESTService {
 		repository.register(member);
 		return Response.created(new URI("localhost:8080/LibraryService/rest/member")).build();
 	}
+
 
 	/**
 	 * <p>
@@ -169,4 +159,5 @@ public class LibraryMemberResourceRESTService {
 		}
 		return member != null;
 	}
+
 }

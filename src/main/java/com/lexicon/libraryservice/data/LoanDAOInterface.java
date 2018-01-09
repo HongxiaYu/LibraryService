@@ -8,7 +8,8 @@ import com.lexicon.libraryservice.model.Loan;
 public interface LoanDAOInterface {
 	
 	public void persistLoan(Long bookId, Long memberID);
-	
+
+
 	public List<Loan> getAllLoans();
 	//get all overdue in 2 days, grouped/sorted by member
 
@@ -24,4 +25,5 @@ public interface LoanDAOInterface {
 
 	void updateLoanReturnDateById(LocalDate returnDate, Long id);
 	
+
 }

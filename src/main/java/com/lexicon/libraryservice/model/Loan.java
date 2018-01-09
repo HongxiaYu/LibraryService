@@ -3,6 +3,7 @@ package com.lexicon.libraryservice.model;
 import java.time.LocalDate;
 
 import javax.persistence.CascadeType;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -24,6 +25,7 @@ public class Loan {
 		super();
 		borrowDate = LocalDate.now();
 		returnDate = borrowDate.plusDays(30);
+
 	}
 
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -76,4 +78,5 @@ public class Loan {
 	public void setReturnDate(LocalDate returnDate) {
 		this.returnDate = returnDate;
 	}		
+
 }

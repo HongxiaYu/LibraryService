@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
@@ -20,6 +21,7 @@ public class LoanDAO implements LoanDAOInterface{
 	EntityManager em;
 	
 	@Override
+
 	public void persistLoan(Long bookId, Long memberId) {
 		Book book = em.find(Book.class, bookId);
 		LibraryMember member = em.find(LibraryMember.class, memberId);		
@@ -28,13 +30,15 @@ public class LoanDAO implements LoanDAOInterface{
 		loan.setMember(member);
 		book.addLoan(loan);
 		member.loadLoans().add(loan);
+
 		em.persist(loan);
 		em.merge(book);
 		em.merge(member);
 	}
 	
 	@Override
-	public List<Loan> getAllLoans(){
+	public List<Loan> getAllLoans()
+	{
 		TypedQuery<Loan> query = em.createQuery("SELECT l FROM Loan l", Loan.class);
 		return query.getResultList();
 	}
@@ -96,5 +100,5 @@ public class LoanDAO implements LoanDAOInterface{
 		
 	}
 	
-		
+
 }
